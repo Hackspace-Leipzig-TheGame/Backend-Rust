@@ -1,8 +1,38 @@
 #![deny(warnings)]
 
+use std::collections::HashMap;
+
+use tokio::sync::RwLock;
+use lazy_static::lazy_static;
 use warp::Filter;
 use futures::StreamExt;
 use futures::FutureExt;
+
+type GameID = u64;
+
+lazy_static! {
+    static ref STATE: RwLock<State> = RwLock::new(State::init());
+}
+
+struct State {
+    games: HashMap<GameID, Game>,
+}
+
+enum Game {
+    Gathering(GameGathering),
+    Running(GameRunning),
+}
+
+struct GameGathering {}
+struct GameRunning {}
+
+impl State {
+    pub fn init() -> Self {
+        Self {
+            games: HashMap::new(),
+        }
+    }
+}
 
 #[tokio::main]
 async fn main() {
