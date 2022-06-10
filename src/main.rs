@@ -1,7 +1,10 @@
 #![deny(warnings)]
 
-use futures_util::{FutureExt, StreamExt};
+extern crate pretty_env_logger;
+
 use warp::Filter;
+use futures::StreamExt;
+use futures::FutureExt;
 
 #[tokio::main]
 async fn main() {
