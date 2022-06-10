@@ -3,6 +3,10 @@ edition = "2021"
 name = "the-game-backend"
 version = "0.1.0"
 
+[package.metadata.nix]
+build = true
+toolchain = "nightly"
+
 [dependencies]
 tokio = { version = "1.19.2", features = ["full"] }
 warp = "0.3.2"
