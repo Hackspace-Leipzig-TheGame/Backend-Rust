@@ -874,6 +874,8 @@ dependencies = [
  "futures",
  "lazy_static",
  "pretty_env_logger",
+ "rand",
+ "regex",
  "serde",
  "tokio",
  "warp",
