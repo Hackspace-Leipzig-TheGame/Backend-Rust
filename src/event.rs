@@ -1,9 +1,9 @@
 //! Implements RFC #2 v0.0.1
 use std::collections::HashMap;
 
-use serde::{Deserialize, Serialize};
 use lazy_static::lazy_static;
 use regex::Regex;
+use serde::{Deserialize, Serialize};
 
 use uuid::Uuid;
 
@@ -61,9 +61,7 @@ pub struct Event {
 pub enum EventKind {
     /// Event to trigger the creation of a new party.
     #[serde(rename = "PARTY/CREATE_PARTY")]
-    CreateParty {
-        owner: Username,
-    },
+    CreateParty { owner: Username },
     /// Server response after a party has successfully been created.
     ///
     /// **Note**: Only send to the user who send the `CreateParty` event.
@@ -208,7 +206,9 @@ impl TryFrom<&'_ str> for PartyId {
 
     fn try_from(raw: &'_ str) -> Result<Self, Self::Error> {
         if PARTY_ID_RE.is_match(raw) {
-            Ok(PartyId { raw: raw.to_owned() })
+            Ok(PartyId {
+                raw: raw.to_owned(),
+            })
         } else {
             Err(InvalidPartyId)
         }

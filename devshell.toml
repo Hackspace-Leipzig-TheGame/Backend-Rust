@@ -1,0 +1,6 @@
+[devshell]
+name = "the-game-backend-rust"
+
+[[commands]]
+package = "treefmt"
+category = "formatters"

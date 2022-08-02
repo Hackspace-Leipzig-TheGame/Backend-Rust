@@ -41,8 +41,6 @@ pub struct GameRunning {
 
 impl From<GameGathering> for GameRunning {
     fn from(g: GameGathering) -> Self {
-        Self {
-            id: g.id,
-        }
+        Self { id: g.id }
     }
 }
