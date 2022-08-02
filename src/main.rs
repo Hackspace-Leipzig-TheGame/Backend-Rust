@@ -8,8 +8,10 @@ use warp::{header, http::Response, hyper::body::Bytes, reply::with_header, Filte
 use std::{collections::HashMap, sync::Arc};
 
 mod thegame;
+mod event;
 
 use thegame::Game;
+use event::{Event, EventKind};
 
 type GameID = Uuid;
 type State = Arc<RwLock<StateRaw>>;
